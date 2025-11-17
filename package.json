@@ -9,7 +9,8 @@
     "build": "tsc",
     "clean": "rimraf dist",
     "prepare": "npm run build",
-    "test": "node test.js"
+    "test": "node test.js",
+    "example:fetch-scans": "ts-node examples/fetch-scans.ts"
   },
   "keywords": [
     "prowler",
@@ -20,8 +21,11 @@
   ],
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/node": "^20.0.0",
     "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
     "rimraf": "^5.0.5",
+    "ts-node": "^10.9.1",
     "typescript": "^5.5.3"
   },
   "peerDependencies": {
