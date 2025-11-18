@@ -4,11 +4,17 @@
   "description": "TypeScript client for Prowler API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "generate": "openapi-generator-cli generate -i Prowler-API.yaml -g typescript-axios -o src/generated --skip-validate-spec --additional-properties=useSingleRequestParameter=true",
     "build": "tsc",
     "clean": "rimraf dist",
     "prepare": "npm run build",
+    "prepublishOnly": "npm run clean && npm run build",
     "test": "node test.js",
     "example:fetch-scans": "ts-node examples/fetch-scans.ts"
   },
@@ -19,6 +25,16 @@
     "typescript",
     "openapi"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prowler-cloud/prowler-ts-client.git"
+  },
+  "author": "Prowler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prowler-cloud/prowler-ts-client/issues"
+  },
+  "homepage": "https://github.com/prowler-cloud/prowler-ts-client#readme",
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
     "@types/node": "^20.0.0",

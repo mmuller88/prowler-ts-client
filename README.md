@@ -34,6 +34,41 @@ npm run build
 - `npm run clean`: Remove build output
 - `npm run example:fetch-scans`: Run example to fetch Prowler scans
 
+## Publishing to NPM
+
+This package is automatically published to NPM when a new GitHub release is created.
+
+### Setup NPM Token
+
+1. Generate an NPM access token at [npmjs.com](https://www.npmjs.com/settings/tokens)
+2. Add the token as `NPM_TOKEN` secret in GitHub repository settings
+   - Go to: Settings → Secrets and variables → Actions → New repository secret
+
+### Release Process
+
+1. Update version and commit changes (following semantic versioning)
+2. Create and push git tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+3. Create GitHub release from the tag
+4. GitHub Actions will automatically build and publish to NPM
+
+### Semantic Versioning
+
+Use conventional commit format for clear version management:
+- `fix:` → patch version (0.0.x)
+- `feat:` → minor version (0.x.0)
+- `BREAKING CHANGE:` → major version (x.0.0)
+
+Example commits:
+```bash
+git commit -m "fix: resolve authentication issue"
+git commit -m "feat: add new scan filtering options"
+git commit -m "feat!: redesign API client interface"
+```
+
 ## Usage
 
 ### Authentication
