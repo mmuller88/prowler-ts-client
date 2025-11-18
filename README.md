@@ -46,28 +46,19 @@ This package is automatically published to NPM when a new GitHub release is crea
 
 ### Release Process
 
-1. Update version and commit changes (following semantic versioning)
-2. Create and push git tag:
+1. Version is automatically synced from `Prowler-API.yaml`
+2. Create GitHub release (tag name doesn't matter):
    ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
+   gh release create release-$(date +%Y%m%d) --title "Release $(date +%Y-%m-%d)" --notes "Update to API version 1.14.1"
    ```
-3. Create GitHub release from the tag
-4. GitHub Actions will automatically build and publish to NPM
+3. GitHub Actions will automatically:
+   - Extract version from Prowler-API.yaml
+   - Update package.json version
+   - Build and publish to NPM
 
-### Semantic Versioning
+### Versioning
 
-Use conventional commit format for clear version management:
-- `fix:` → patch version (0.0.x)
-- `feat:` → minor version (0.x.0)
-- `BREAKING CHANGE:` → major version (x.0.0)
-
-Example commits:
-```bash
-git commit -m "fix: resolve authentication issue"
-git commit -m "feat: add new scan filtering options"
-git commit -m "feat!: redesign API client interface"
-```
+Package version is automatically synced with Prowler API version from `Prowler-API.yaml`. When the API updates, simply create a new release to publish the updated client with the new version.
 
 ## Usage
 

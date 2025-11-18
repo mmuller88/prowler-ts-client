@@ -1,6 +1,6 @@
 {
   "name": "prowler-api-client",
-  "version": "0.1.0",
+  "version": "1.14.1",
   "description": "TypeScript client for Prowler API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

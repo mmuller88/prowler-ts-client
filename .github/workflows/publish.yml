@@ -27,11 +27,12 @@ jobs:
       - name: Build package
         run: npm run build
       
-      - name: Extract version from tag
+      - name: Extract version from OpenAPI spec
         id: get_version
         run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          API_VERSION=$(grep -m 1 "version:" Prowler-API.yaml | sed 's/.*version: //' | tr -d ' ')
+          echo "version=$API_VERSION" >> $GITHUB_OUTPUT
+          echo "API version: $API_VERSION"
       
       - name: Update package.json version
         run: |
